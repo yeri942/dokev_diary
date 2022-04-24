@@ -1,7 +1,10 @@
+// import { Route, Routes } from "react-router-dom";
+// import styled from "styled-components";
 import "./App.css";
+import Main from "./page/Main";
 
 function App() {
-    return <div className="App">도깨비다이어리~</div>;
+    return <Main />;
 }
 
 export default App;
