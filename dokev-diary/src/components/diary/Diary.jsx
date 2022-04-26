@@ -6,6 +6,7 @@ const Diary = () => {
     return (
         <DiaryArea>
             <DiaryBook>
+                <Logo src="./img/logo.jpg" />
                 <AboutArea>
                     <About></About>
                 </AboutArea>
@@ -28,8 +29,19 @@ const DiaryBook = styled.div`
     height: 95vh;
     border-radius: 15px;
     bottom: -10vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
 `;
 const AboutArea = styled.div`
     position: absolute;
@@ -38,10 +50,23 @@ const AboutArea = styled.div`
     background-color: white;
     bottom: 12vh;
     border-radius: 15px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
     justify-content: center;
-    text-align: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+`;
+const Logo = styled.img`
+    width: 50%;
+    top: 10vh;
+    position: absolute;
 `;
 const About = styled.div`
     width: 93%;
