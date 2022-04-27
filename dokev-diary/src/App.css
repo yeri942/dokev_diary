@@ -1,4 +1,5 @@
-.App {
-    text-align: center;
-    /* color: #edc590; */
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+
+* {
+    font-family: "Jua", sans-serif;
 }

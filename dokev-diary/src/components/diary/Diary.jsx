@@ -1,16 +1,35 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 // import { useState, useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
 
 const Diary = () => {
+    let pageCount = 0;
+    let changePage = 0;
+    const FlipPage = () => {
+        changePage++;
+    };
     return (
         <DiaryArea>
             <DiaryBook>
                 <Logo src="./img/logo.jpg" />
-                <AboutArea>
-                    <About></About>
+                <AboutArea onClick={() => FlipPage}>
+                    <About>
+                        <School>초등학교</School>
+                        <Class>
+                            <div>학년</div>
+                            <div>반</div>
+                            <div>번</div>
+                        </Class>
+                        <Name>이름</Name>
+                    </About>
                 </AboutArea>
             </DiaryBook>
+            <DiaryBookBack />
+            {[...Array(4)].map((n) => {
+                pageCount++;
+                return <DiaryPage id={n} number={pageCount} />;
+            })}
+            <DiaryPage />
         </DiaryArea>
     );
 };
@@ -22,12 +41,13 @@ const DiaryArea = styled.div`
     display: flex;
     justify-content: center;
 `;
+
 const DiaryBook = styled.div`
     position: absolute;
     background-color: #6ed5fe;
     width: 50%;
     height: 95vh;
-    border-radius: 15px;
+    border-radius: 3vh;
     bottom: -10vh;
     display: -webkit-box;
     display: -webkit-flex;
@@ -42,7 +62,11 @@ const DiaryBook = styled.div`
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
+    z-index: 100;
+    transform-origin: 0 100%;
+    transform: rotate3d(0, 1, 0, 0deg);
 `;
+
 const AboutArea = styled.div`
     position: absolute;
     width: 50%;
@@ -75,5 +99,72 @@ const About = styled.div`
     bottom: 12vh;
     border-radius: 15px;
     border: 0.5vh dashed #6ed5fe;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    & div {
+        font-size: 4vh;
+    }
+`;
+const School = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 90%;
+    height: 32%;
+    border-bottom: 1px solid lightgray;
+`;
+const Class = styled.div`
+    display: flex;
+    align-items: flex-end;
+    width: 90%;
+    height: 32%;
+    border-bottom: 1px solid lightgray;
+    & div {
+        display: flex;
+        justify-content: flex-end;
+        width: 33%;
+    }
+`;
+const Name = styled.div`
+    display: flex;
+    align-items: flex-end;
+    width: 90%;
+    height: 33%;
+`;
+
+const FlipPageBack = keyframes`
+  0% {
+    transform: rotate3d(0, 1, 0, 90deg);
+  }
+  50% {
+    transform: rotate3d(0, 1, 0, 180deg);
+  }
+  100% {
+    transform: rotate3d(0, 1, 0, 180deg);
+  }`;
+
+const DiaryBookBack = styled.div`
+    position: absolute;
+    background-color: #6ed5fe;
+    width: 50%;
+    height: 95vh;
+    border-radius: 3vh;
+    bottom: -10vh;
+    z-index: 89;
+    transform-origin: 0 100%;
+    animation: ${FlipPageBack} 2s 0s 2s infinite linear alternate;
+`;
+const DiaryPage = styled.div`
+    position: absolute;
+    background-color: white;
+    width: 50%;
+    height: 95vh;
+    border-radius: 3vh;
+    bottom: -10vh;
+    right: ${(props) => 51 - props.number * 0.5}vh;
+    box-shadow: 0.2vh 0.7vh 0.5vh #0000002b;
+    z-index: ${(props) => 10 - props.number};
 `;
 export default Diary;
