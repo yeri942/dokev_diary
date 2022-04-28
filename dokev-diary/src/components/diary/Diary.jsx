@@ -4,15 +4,18 @@ import styled, { keyframes } from "styled-components";
 
 const Diary = () => {
     let pageCount = 0;
-    let changePage = 0;
-    const FlipPage = () => {
-        changePage++;
+    let coverState = 0;
+    const changeCoverState = () => {
+        coverState = 1;
     };
     return (
         <DiaryArea>
-            <DiaryBook>
+            <DiaryBook
+                onClick={() => changeCoverState()}
+                pagestate={coverState}
+            >
                 <Logo src="./img/logo.jpg" />
-                <AboutArea onClick={() => FlipPage}>
+                <AboutArea>
                     <About>
                         <School>초등학교</School>
                         <Class>
@@ -64,7 +67,12 @@ const DiaryBook = styled.div`
     align-items: center;
     z-index: 100;
     transform-origin: 0 100%;
-    transform: rotate3d(0, 1, 0, 0deg);
+    transform: ${(props) => {
+        props.pagestate = 0
+            ? "rotate3d(0, 1, 0, 180deg)"
+            : "rotate3d(0, 1, 0, 0deg)";
+    }};
+    cursor: pointer;
 `;
 
 const AboutArea = styled.div`
