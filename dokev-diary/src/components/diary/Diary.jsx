@@ -10,10 +10,7 @@ const Diary = () => {
     };
     return (
         <DiaryArea>
-            <DiaryBook
-                onClick={() => changeCoverState()}
-                pagestate={coverState}
-            >
+            <DiaryBook onClick={() => changeCoverState} pagestate={coverState}>
                 <Logo src="./img/logo.jpg" />
                 <AboutArea>
                     <About>
@@ -30,7 +27,7 @@ const Diary = () => {
             <DiaryBookBack />
             {[...Array(4)].map((n) => {
                 pageCount++;
-                return <DiaryPage id={n} number={pageCount} />;
+                return <DiaryPage key={pageCount} number={pageCount} />;
             })}
             <DiaryPage />
         </DiaryArea>
