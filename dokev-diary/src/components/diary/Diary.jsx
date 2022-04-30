@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 // import { useState, useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
@@ -5,12 +6,18 @@ import styled, { keyframes } from "styled-components";
 const Diary = () => {
     let pageCount = 0;
     let coverState = 0;
-    const changeCoverState = () => {
-        coverState = 1;
-    };
+    useEffect(() => {
+        coverState = 0;
+    });
     return (
         <DiaryArea>
-            <DiaryBook onClick={() => changeCoverState} pagestate={coverState}>
+            <DiaryBook
+                onClick={() => {
+                    coverState = 1;
+                    console.log(coverState);
+                }}
+                pagestate={coverState}
+            >
                 <Logo src="./img/logo.jpg" />
                 <AboutArea>
                     <About>
@@ -48,6 +55,8 @@ const DiaryBook = styled.div`
     width: 50%;
     height: 95vh;
     border-radius: 3vh;
+    border: ${(props) =>
+        props.pagestate === 0 ? "5px solid red" : "5px solid yellow"};
     bottom: -10vh;
     display: -webkit-box;
     display: -webkit-flex;
@@ -64,11 +73,10 @@ const DiaryBook = styled.div`
     align-items: center;
     z-index: 100;
     transform-origin: 0 100%;
-    transform: ${(props) => {
-        props.pagestate = 0
-            ? "rotate3d(0, 1, 0, 180deg)"
-            : "rotate3d(0, 1, 0, 0deg)";
-    }};
+    transform: ${(props) =>
+        props.pagestate === 0
+            ? "rotate3d(0, 1, 0, 0deg)"
+            : "rotate3d(0, 1, 0, 180deg)"};
     cursor: pointer;
 `;
 
