@@ -1,22 +1,31 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
 // import { useState, useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
 
 const Diary = () => {
-    let pageCount = 0;
-    let coverState = 0;
+    const [pageCount, setPageCount] = useState(0);
+    const [mouseStateOnCover, setMouseStateOnCover] = useState(0);
     useEffect(() => {
-        coverState = 0;
+        console.log(mouseStateOnCover);
     });
     return (
         <DiaryArea>
             <DiaryBook
-                onClick={() => {
-                    coverState = 1;
-                    console.log(coverState);
+                onMouseEnter={() => {
+                    setMouseStateOnCover(1);
+                    console.log(mouseStateOnCover);
                 }}
-                pagestate={coverState}
+                onMouseLeave={() => {
+                    setMouseStateOnCover(0);
+                    console.log(mouseStateOnCover);
+                }}
+                style={{
+                    transform:
+                        mouseStateOnCover === 0
+                            ? "rotate3d(0, 1, 0, 30deg)"
+                            : "rotate3d(0, 1, 0, 0deg)",
+                }}
             >
                 <Logo src="./img/logo.jpg" />
                 <AboutArea>
@@ -33,7 +42,7 @@ const Diary = () => {
             </DiaryBook>
             <DiaryBookBack />
             {[...Array(4)].map((n) => {
-                pageCount++;
+                setPageCount(pageCount + 1);
                 return <DiaryPage key={pageCount} number={pageCount} />;
             })}
             <DiaryPage />
@@ -55,8 +64,6 @@ const DiaryBook = styled.div`
     width: 50%;
     height: 95vh;
     border-radius: 3vh;
-    border: ${(props) =>
-        props.pagestate === 0 ? "5px solid red" : "5px solid yellow"};
     bottom: -10vh;
     display: -webkit-box;
     display: -webkit-flex;
@@ -73,10 +80,7 @@ const DiaryBook = styled.div`
     align-items: center;
     z-index: 100;
     transform-origin: 0 100%;
-    transform: ${(props) =>
-        props.pagestate === 0
-            ? "rotate3d(0, 1, 0, 0deg)"
-            : "rotate3d(0, 1, 0, 180deg)"};
+
     cursor: pointer;
 `;
 
