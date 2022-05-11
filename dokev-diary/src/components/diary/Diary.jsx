@@ -4,7 +4,6 @@ import styled, { keyframes } from "styled-components";
 // import { useNavigate } from "react-router-dom";
 
 const Diary = () => {
-    const [pageCount, setPageCount] = useState(0);
     const [mouseStateOnCover, setMouseStateOnCover] = useState(0);
     useEffect(() => {
         console.log(mouseStateOnCover);
@@ -14,17 +13,19 @@ const Diary = () => {
             <DiaryBook
                 onMouseEnter={() => {
                     setMouseStateOnCover(1);
-                    console.log(mouseStateOnCover);
                 }}
                 onMouseLeave={() => {
                     setMouseStateOnCover(0);
-                    console.log(mouseStateOnCover);
                 }}
                 style={{
                     transform:
                         mouseStateOnCover === 0
-                            ? "rotate3d(0, 1, 0, 30deg)"
-                            : "rotate3d(0, 1, 0, 0deg)",
+                            ? "rotate3d(0, 1, 0, 0deg)"
+                            : "rotate3d(0, 1, 0, 30deg)",
+                    boxShadow:
+                        mouseStateOnCover === 0
+                        ? "none"
+                        : "100px 20px 10px black",
                 }}
             >
                 <Logo src="./img/logo.jpg" />
@@ -40,10 +41,9 @@ const Diary = () => {
                     </About>
                 </AboutArea>
             </DiaryBook>
-            <DiaryBookBack />
-            {[...Array(4)].map((n) => {
-                setPageCount(pageCount + 1);
-                return <DiaryPage key={pageCount} number={pageCount} />;
+            {/* <DiaryBookBack /> */}
+            {[0,1,2,3].map((n) => {
+                return <DiaryPage key={n} number={n} />;
             })}
             <DiaryPage />
         </DiaryArea>
@@ -80,7 +80,7 @@ const DiaryBook = styled.div`
     align-items: center;
     z-index: 100;
     transform-origin: 0 100%;
-
+    transition-duration:.7s;
     cursor: pointer;
 `;
 
