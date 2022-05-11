@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 // import { useState, useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
 
 const Diary = () => {
     const [mouseStateOnCover, setMouseStateOnCover] = useState(0);
+    const [coverState, setCoverState] = useState(false);
     useEffect(() => {
         console.log(mouseStateOnCover);
     });
@@ -17,15 +18,19 @@ const Diary = () => {
                 onMouseLeave={() => {
                     setMouseStateOnCover(0);
                 }}
+                onClick={() => {
+                    setCoverState(true);
+                }}
                 style={{
-                    transform:
-                        mouseStateOnCover === 0
-                            ? "rotate3d(0, 1, 0, 0deg)"
-                            : "rotate3d(0, 1, 0, 30deg)",
+                    transform: coverState
+                        ? "rotate3d(0, 1, 0, 90deg)"
+                        : mouseStateOnCover === 1
+                        ? "rotate3d(0, 1, 0, 20deg)"
+                        : "rotate3d(0, 1, 0, 0deg)",
                     boxShadow:
                         mouseStateOnCover === 0
-                        ? "none"
-                        : "100px 20px 10px black",
+                            ? "none"
+                            : "4vh 3vh 1vh #00000055",
                 }}
             >
                 <Logo src="./img/logo.jpg" />
@@ -41,11 +46,16 @@ const Diary = () => {
                     </About>
                 </AboutArea>
             </DiaryBook>
-            {/* <DiaryBookBack /> */}
-            {[0,1,2,3].map((n) => {
+            <DiaryBookBack
+                style={{
+                    transform: coverState
+                        ? "rotate3d(0, 1, 0, 180deg)"
+                        : "rotate3d(0, 1, 0, 90deg)",
+                }}
+            ></DiaryBookBack>
+            {[0, 1, 2, 3].map((n) => {
                 return <DiaryPage key={n} number={n} />;
             })}
-            <DiaryPage />
         </DiaryArea>
     );
 };
@@ -80,7 +90,7 @@ const DiaryBook = styled.div`
     align-items: center;
     z-index: 100;
     transform-origin: 0 100%;
-    transition-duration:.7s;
+    transition-duration: 0.7s;
     cursor: pointer;
 `;
 
@@ -90,7 +100,7 @@ const AboutArea = styled.div`
     height: 25%;
     background-color: white;
     bottom: 12vh;
-    border-radius: 15px;
+    border-radius: 2vh;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -114,7 +124,7 @@ const About = styled.div`
     height: 85%;
     background-color: white;
     bottom: 12vh;
-    border-radius: 15px;
+    border-radius: 2vh;
     border: 0.5vh dashed #6ed5fe;
     display: flex;
     flex-direction: column;
@@ -130,14 +140,14 @@ const School = styled.div`
     align-items: flex-end;
     width: 90%;
     height: 32%;
-    border-bottom: 1px solid lightgray;
+    border-bottom: 0.1vh solid lightgray;
 `;
 const Class = styled.div`
     display: flex;
     align-items: flex-end;
     width: 90%;
     height: 32%;
-    border-bottom: 1px solid lightgray;
+    border-bottom: 0.1vh solid lightgray;
     & div {
         display: flex;
         justify-content: flex-end;
@@ -151,27 +161,18 @@ const Name = styled.div`
     height: 33%;
 `;
 
-const FlipPageBack = keyframes`
-  0% {
-    transform: rotate3d(0, 1, 0, 90deg);
-  }
-  50% {
-    transform: rotate3d(0, 1, 0, 180deg);
-  }
-  100% {
-    transform: rotate3d(0, 1, 0, 180deg);
-  }`;
-
 const DiaryBookBack = styled.div`
     position: absolute;
-    background-color: #6ed5fe;
+    background-color: #40a9d3;
     width: 50%;
     height: 95vh;
     border-radius: 3vh;
     bottom: -10vh;
     z-index: 89;
     transform-origin: 0 100%;
-    animation: ${FlipPageBack} 2s 0s 2s infinite linear alternate;
+    transition-duration: 1.3s;
+    transition-delay: 0.6s;
+    transition-timing-function: cubic-bezier(0.5, 0.5, 0.5, 0.5);
 `;
 const DiaryPage = styled.div`
     position: absolute;
