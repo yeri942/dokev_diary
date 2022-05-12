@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 // import { useState, useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
+import DiaryInnerPage from "./DiaryInnerPage";
 
 const Diary = () => {
     const [mouseStateOnCover, setMouseStateOnCover] = useState(0);
@@ -54,7 +55,11 @@ const Diary = () => {
                 }}
             ></DiaryBookBack>
             {[0, 1, 2, 3].map((n) => {
-                return <DiaryPage key={n} number={n} />;
+                return (
+                    <DiaryPage key={n} number={n}>
+                        <DiaryInnerPage />
+                    </DiaryPage>
+                );
             })}
         </DiaryArea>
     );
