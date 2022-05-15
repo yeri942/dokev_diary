@@ -53,7 +53,21 @@ const Diary = () => {
                         ? "rotate3d(0, 1, 0, 180deg)"
                         : "rotate3d(0, 1, 0, 90deg)",
                 }}
-            ></DiaryBookBack>
+            >
+                <DiaryListArea
+                    style={{
+                        transform: coverState
+                            ? "rotate3d(0, 1, 0, 180deg)"
+                            : "rotate3d(0, 1, 0, 90deg)",
+                    }}
+                >
+                    <DiaryList>
+                        <div>1.첫번째일기제목</div>
+                        <div>2.룰루랄라울라울라</div>
+                        <div>3.오늘먹은우리할매떡볶이꿀맛탱</div>
+                    </DiaryList>
+                </DiaryListArea>
+            </DiaryBookBack>
             {[0, 1, 2, 3].map((n) => {
                 return (
                     <DiaryPage key={n} number={n}>
@@ -167,8 +181,10 @@ const Name = styled.div`
 `;
 
 const DiaryBookBack = styled.div`
+    display: flex;
+    justify-content: center;
     position: absolute;
-    background-color: #40a9d3;
+    background-color: #d9ecf3;
     width: 50%;
     height: 95vh;
     border-radius: 3vh;
@@ -178,6 +194,22 @@ const DiaryBookBack = styled.div`
     transition-duration: 1.3s;
     transition-delay: 0.6s;
     transition-timing-function: cubic-bezier(0.5, 0.5, 0.5, 0.5);
+`;
+const DiaryListArea = styled.div`
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    top: 5vh;
+    border-radius: 3vh;
+    border: solid 1vh #5dbce1;
+    background-color: #d9ecf3;
+`;
+const DiaryList = styled.div`
+    position: absolute;
+    background-color: red;
+    right: 2vh;
+    bottom: 10vh;
+    font-size: 3vh;
 `;
 const DiaryPage = styled.div`
     position: absolute;
