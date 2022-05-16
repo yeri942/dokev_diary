@@ -206,10 +206,21 @@ const DiaryListArea = styled.div`
 `;
 const DiaryList = styled.div`
     position: absolute;
-    background-color: red;
     right: 2vh;
     bottom: 10vh;
     font-size: 3vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    color: #006b92;
+    & div {
+        transition-duration: 0.3s;
+        cursor: pointer;
+        margin: 1vh 0;
+    }
+    & div:hover {
+        color: #0d3645;
+    }
 `;
 const DiaryPage = styled.div`
     position: absolute;
