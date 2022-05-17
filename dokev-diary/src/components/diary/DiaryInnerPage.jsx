@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import Page1 from "./diaryPage/Page1";
+import Page1 from "./diaryPage/Day1";
 const DiaryInnerPage = () => {
     return (
         <OuterFrame>
