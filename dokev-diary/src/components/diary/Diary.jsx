@@ -75,6 +75,7 @@ const Diary = () => {
                     </DiaryPage>
                 );
             })}
+            {img1State ? <D1Card src="./img/eraser.png" /> : null}
         </DiaryArea>
     );
 };
@@ -232,5 +233,9 @@ const DiaryPage = styled.div`
     right: ${(props) => 51 - props.number * 0.5}vh;
     box-shadow: 0.2vh 0.7vh 0.5vh #0000002b;
     z-index: ${(props) => 10 - props.number};
+`;
+
+const D1Card = styled.img`
+    position: absolute;
 `;
 export default Diary;

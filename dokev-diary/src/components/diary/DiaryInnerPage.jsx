@@ -59,6 +59,7 @@ const DArea = styled.div`
     width: 100.1%;
     height: 50vh;
     border-bottom: 0.4vh solid #605551;
+    overflow: hidden;
 `;
 const AArea = styled.div`
     font-family: "Gaegu", cursive;
