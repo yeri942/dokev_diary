@@ -2,10 +2,10 @@ import { atom } from "recoil";
 
 export const pageState = atom({
     key: "pageState",
-    default: false,
+    default: 0,
 });
 
-export const paintingClickState = atom({
-    key: "pageState",
+export const cardState = atom({
+    key: "cardState",
     default: false,
 });

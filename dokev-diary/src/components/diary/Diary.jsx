@@ -3,10 +3,13 @@ import styled from "styled-components";
 // import { useState, useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
 import DiaryInnerPage from "./DiaryInnerPage";
+import { useSetRecoilState } from "recoil";
+import { pageState } from "../../state/atoms";
 
 const Diary = () => {
     const [mouseStateOnCover, setMouseStateOnCover] = useState(0);
     const [coverState, setCoverState] = useState(false);
+    const setPage = useSetRecoilState(pageState);
     useEffect(() => {
         console.log(mouseStateOnCover);
     });
@@ -21,6 +24,7 @@ const Diary = () => {
                 }}
                 onClick={() => {
                     setCoverState(true);
+                    setPage(1);
                 }}
                 style={{
                     transform: coverState

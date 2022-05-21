@@ -2,13 +2,7 @@
 // import styled from "styled-components";
 import "./App.css";
 import Main from "./page/Main";
-import {
-    RecoilRoot,
-    atom,
-    selector,
-    useRecoilState,
-    useRecoilValue,
-} from "recoil";
+import { RecoilRoot } from "recoil";
 
 function App() {
     return (
