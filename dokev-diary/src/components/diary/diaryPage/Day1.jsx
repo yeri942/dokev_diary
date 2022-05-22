@@ -1,10 +1,10 @@
 import { useState } from "react";
 import styled, { keyframes } from "styled-components";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import { cardState } from "../../../state/atoms";
 
 const Page1 = () => {
-    const setCard = useSetRecoilState(cardState);
+    const [card, setCard] = useRecoilState(cardState);
     return (
         <div>
             <D1IMG src="./img/diaryImg/day1BG.png" alt="background" />
@@ -13,7 +13,7 @@ const Page1 = () => {
                 src="./img/diaryImg/day1G.png"
                 alt="seagull"
                 onClick={() => {
-                    setCard(true);
+                    setCard(!card);
                 }}
             />
         </div>

@@ -79,7 +79,6 @@ const Diary = () => {
                     </DiaryPage>
                 );
             })}
-            {/* {img1State ? <D1Card src="./img/eraser.png" /> : null} */}
         </DiaryArea>
     );
 };

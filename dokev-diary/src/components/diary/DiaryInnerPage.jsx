@@ -16,7 +16,7 @@ const DiaryInnerPage = () => {
             <DArea>
                 <Page1 />
             </DArea>
-            <AArea>
+            <WArea>
                 <WrapVLine>
                     {[...Array(11)].map((n) => {
                         return <VLine></VLine>;
@@ -27,7 +27,11 @@ const DiaryInnerPage = () => {
                         return <HLine></HLine>;
                     })}
                 </WrapHLine>
-            </AArea>
+                <Writing>
+                    &nbsp;오늘 흰고래 마을로 이사를 왔다<Dot>.</Dot> 푸른 바다와
+                    한옥이 예쁘다<Dot>.</Dot>
+                </Writing>
+            </WArea>
         </OuterFrame>
     );
 };
@@ -61,12 +65,23 @@ const DArea = styled.div`
     border-bottom: 0.4vh solid #605551;
     overflow: hidden;
 `;
-const AArea = styled.div`
-    font-family: "Gaegu", cursive;
+const WArea = styled.div`
     width: 100.1%;
     display: flex;
     font-size: 5vh;
-    letter-spacing: 3.5vh;
+`;
+const Writing = styled.div`
+    position: absolute;
+    width: 93%;
+    margin-left: 1.5vh;
+    font-family: "Gaegu", cursive;
+    letter-spacing: 3.6vh;
+    word-spacing: 1.5vh;
+    line-height: 7.3vh;
+`;
+const Dot = styled.span`
+    font-family: "Gaegu", cursive;
+    margin-right: 3vh;
 `;
 const WrapVLine = styled.div`
     position: absolute;
