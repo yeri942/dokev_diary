@@ -1,0 +1,8 @@
+{
+    "day": [
+        {
+            "src": ["day1BG", "day1P", "day1G"],
+            "alt": ["background", "person", "seagull"]
+        }
+    ]
+}
