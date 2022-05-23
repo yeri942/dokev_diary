@@ -1,9 +1,21 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import Page1 from "./diaryPage/Day1";
+import Page from "./Page";
+import { useRecoilState } from "recoil";
+import { pageState } from "../../state/atoms";
+
 const DiaryInnerPage = () => {
+    const [page, setPage] = useRecoilState(pageState);
     return (
         <OuterFrame>
+            <NextButton
+                onClick={() => {
+                    setPage(page + 1);
+                }}
+            >
+                Next&nbsp;
+                <Triangle />
+            </NextButton>
             <DayInfo>
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 년 &nbsp; &nbsp; 월&nbsp;
                 &nbsp; 일&nbsp; &nbsp; 요일&nbsp; 날씨
@@ -14,7 +26,7 @@ const DiaryInnerPage = () => {
                 </Weather>
             </DayInfo>
             <DArea>
-                <Page1 />
+                <Page />
             </DArea>
             <WArea>
                 <WrapVLine>
@@ -40,6 +52,22 @@ const OuterFrame = styled.div`
     margin: 5vh;
     border: 0.4vh solid #605551;
     height: 80vh;
+`;
+const NextButton = styled.div`
+    display: flex;
+    position: absolute;
+    top: 1.5vh;
+    right: 2vh;
+    align-items: center;
+    color: #605551;
+    cursor: pointer;
+`;
+const Triangle = styled.div`
+    width: 0;
+    height: 0;
+    border-bottom: 1vh solid transparent;
+    border-top: 1vh solid transparent;
+    border-left: 1.5vh solid #605551;
 `;
 const DayInfo = styled.div`
     height: 8vh;
