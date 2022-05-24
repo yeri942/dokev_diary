@@ -16,10 +16,7 @@ const Page = () => {
                     <div>
                         {pageData.day[n].src.map((srcL) => {
                             return (
-                                <DIMG
-                                    src={"./img/diaryImg/" + srcL + ".png"}
-                                    alt={pageData.day[n].alt[]}
-                                />
+                                <DIMG src={"./img/diaryImg/" + srcL + ".png"} />
                             );
                         })}
                         <DIMG src="./img/diaryImg/day1P.png" alt="person" />
