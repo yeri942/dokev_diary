@@ -16,15 +16,21 @@ const Page = () => {
             {[0].map((n) => {
                 setImgL(pageData.day[n].src.length);
                 for (let index = 0; index < imgL; index++) {
-                    setImgList(imgList);
+                    setImgList(imgList.push(index));
                 }
+                console.log(imgList);
                 return (
                     <div>
-                        {pageData.day[n].src.map((srcL) => {
+                        {imgList.map((ILN) => {
                             return (
                                 <DIMG
-                                    src={"./img/diaryImg/" + srcL + ".png"}
-                                    number={1}
+                                    src={
+                                        "./img/diaryImg/" +
+                                        pageData.day[n].src[ILN] +
+                                        ".png"
+                                    }
+                                    alt={pageData.day[n].alt[ILN]}
+                                    key={ILN}
                                 />
                             );
                         })}
@@ -36,7 +42,7 @@ const Page = () => {
         </div>
     );
 };
-const gMove1 = keyframes`
+const gMove0 = keyframes`
     0%{
         top:12vh;
     }
@@ -50,7 +56,7 @@ const DIMG = styled.img`
     height: 50vh;
     cursor: pointer;
     &:last-child {
-        animation: ${(props) => "gMove" + props.number} 1s infinite ease-in-out
+        animation: ${(props) => "gMove" + props.key} 1s infinite ease-in-out
             alternate;
     }
 `;
