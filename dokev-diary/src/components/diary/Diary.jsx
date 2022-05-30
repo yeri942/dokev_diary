@@ -24,7 +24,6 @@ const Diary = () => {
                 }}
                 onClick={() => {
                     setCoverState(true);
-                    setPage(1);
                 }}
                 style={{
                     transform: coverState
