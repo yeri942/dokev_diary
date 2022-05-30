@@ -3,6 +3,14 @@
         {
             "src": ["day1BG", "day1P", "day1G"],
             "alt": ["background", "person", "seagull"]
+        },
+        {
+            "src": ["day2BG", "day2P1", "day2P2"],
+            "alt": ["background", "person_1", "person_2"]
+        },
+        {
+            "src": ["day3BG", "day3DH", "day3GS"],
+            "alt": ["background", "dokev", "glass"]
         }
     ]
 }

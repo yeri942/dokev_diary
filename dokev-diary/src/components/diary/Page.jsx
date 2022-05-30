@@ -1,44 +1,43 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
-import { useRecoilState } from "recoil";
-import { cardState } from "../../state/atoms";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { cardState, pageState } from "../../state/atoms";
 import pageData from "../../data/pageData.json";
 const Page = () => {
     const [card, setCard] = useRecoilState(cardState);
     const [imgL, setImgL] = useState(0);
-    const [imgList, setImgList] = useState([]);
+    // const [imgList, setImgList] = useState([0]);
+    const page = useRecoilValue(pageState);
+    // setImgL(pageData.day[page].src.length);
+    // useEffect(() => {
+    //     const makeList = () => {
+    //         let imgList = [];
+    //         for (let i = 0; i < imgL; i++) {
+    //             imgList.push(i);
+    //             console.log(imgList, i);
+    //         }
+    //         return imgList;
+    //     };
+    //     makeList();
+    // }, []);
     return (
         <div
             onClick={() => {
                 setCard(!card);
             }}
         >
-            {[0].map((n) => {
-                setImgL(pageData.day[n].src.length);
-                for (let index = 0; index < imgL; index++) {
-                    setImgList(imgList.push(index));
-                }
-                console.log(imgList);
-                return (
-                    <div>
-                        {imgList.map((ILN) => {
-                            return (
-                                <DIMG
-                                    src={
-                                        "./img/diaryImg/" +
-                                        pageData.day[n].src[ILN] +
-                                        ".png"
-                                    }
-                                    alt={pageData.day[n].alt[ILN]}
-                                    key={ILN}
-                                />
-                            );
-                        })}
-                        {/* <DIMG src="./img/diaryImg/day1P.png" alt="person" />
+            <div>
+                {pageData.day[page].src.map((ILN) => {
+                    return (
+                        <DIMG
+                            src={"./img/diaryImg/" + ILN + ".png"}
+                            key={ILN}
+                        />
+                    );
+                })}
+                {/* <DIMG src="./img/diaryImg/day1P.png" alt="person" />
                         <DIMG src="./img/diaryImg/day1G.png" alt="seagull" /> */}
-                    </div>
-                );
-            })}
+            </div>
         </div>
     );
 };

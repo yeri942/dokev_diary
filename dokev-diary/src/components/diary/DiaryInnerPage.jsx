@@ -10,7 +10,9 @@ const DiaryInnerPage = () => {
         <OuterFrame>
             <NextButton
                 onClick={() => {
-                    setPage(page + 1);
+                    if (page < 3) {
+                        setPage(page + 1);
+                    }
                 }}
             >
                 Next&nbsp;

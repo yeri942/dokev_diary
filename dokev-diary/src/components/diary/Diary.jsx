@@ -72,7 +72,7 @@ const Diary = () => {
                     </DiaryList>
                 </DiaryListArea>
             </DiaryBookBack>
-            {[0, 1, 2, 3].map((n) => {
+            {[0, 1, 2, 3, 4].map((n) => {
                 return (
                     <DiaryPage key={n} number={n}>
                         <DiaryInnerPage />
