@@ -9,7 +9,7 @@ const Card = () => {
     return (
         <div>
             <CardArea
-                src="./img/cardImg/card1.png"
+                src={"./img/cardImg/card" + page + ".png"}
                 style={{
                     transform: card ? "rotate(20deg)" : "rotate(0deg)",
                     right: card ? "5vh" : "50vh",
