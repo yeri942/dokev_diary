@@ -3,16 +3,16 @@ import styled from "styled-components";
 import Page from "./Page";
 import { useRecoilState } from "recoil";
 import { pageState } from "../../state/atoms";
+import pageData from "../../data/pageData.json";
 
 const DiaryInnerPage = () => {
     const [page, setPage] = useRecoilState(pageState);
+
     return (
         <OuterFrame>
             <NextButton
                 onClick={() => {
-                    if (page !== 3) {
-                        setPage(page + 1);
-                    }
+                    page === 2 ? setPage(0) : setPage(page + 1);
                 }}
             >
                 Next&nbsp;
@@ -42,8 +42,14 @@ const DiaryInnerPage = () => {
                     })}
                 </WrapHLine>
                 <Writing>
-                    &nbsp;오늘 흰고래 마을로 이사를 왔다<Dot>.</Dot> 푸른 바다와
-                    한옥이 예쁘다<Dot>.</Dot>
+                    &nbsp;
+                    {pageData.day[page].text.map((innerText) => {
+                        return innerText.length > 1 ? (
+                            innerText
+                        ) : (
+                            <Special>{innerText}</Special>
+                        );
+                    })}
                 </Writing>
             </WArea>
         </OuterFrame>
@@ -109,7 +115,7 @@ const Writing = styled.div`
     word-spacing: 1.5vh;
     line-height: 7.3vh;
 `;
-const Dot = styled.span`
+const Special = styled.span`
     font-family: "Gaegu", cursive;
     margin-right: 3vh;
 `;
