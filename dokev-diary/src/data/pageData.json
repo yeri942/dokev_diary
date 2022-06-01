@@ -2,15 +2,38 @@
     "day": [
         {
             "src": ["day1BG", "day1P", "day1G"],
-            "alt": ["background", "person", "seagull"]
+            "alt": ["background", "person", "seagull"],
+            "text": [
+                "오늘 흰고래 마을로 이사를 왔다",
+                ".",
+                "푸른 바다와 한옥이 예쁘다",
+                "."
+            ]
         },
         {
             "src": ["day2BG", "day2P1", "day2P2"],
-            "alt": ["background", "person_1", "person_2"]
+            "alt": ["background", "person_1", "person_2"],
+            "text": [
+                "스케이트도 타고",
+                ",",
+                "우산도 타면서 우리 마을을 구경했다",
+                ".",
+                "정말 좋았다",
+                "."
+            ]
         },
         {
             "src": ["day3BG", "day3DH", "day3GS"],
-            "alt": ["background", "dokev", "glass"]
+            "alt": ["background", "dokev", "glass"],
+            "text": [
+                "이상한 안경을 주웠다",
+                ".",
+                "쓰면 도깨비 친구들이 보인다",
+                ".",
+                "신기해",
+                "!",
+                "!"
+            ]
         }
     ]
 }
