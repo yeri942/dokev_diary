@@ -65,9 +65,11 @@ const Diary = () => {
                     }}
                 >
                     <DiaryList>
-                        <div>1.첫번째일기제목</div>
-                        <div>2.룰루랄라울라울라</div>
-                        <div>3.오늘먹은우리할매떡볶이꿀맛탱</div>
+                        <div onClick={() => setPage(0)}>1.첫번째일기제목</div>
+                        <div onClick={() => setPage(1)}>2.룰루랄라울라울라</div>
+                        <div onClick={() => setPage(2)}>
+                            3.오늘먹은우리할매떡볶이꿀맛탱
+                        </div>
                     </DiaryList>
                 </DiaryListArea>
             </DiaryBookBack>
