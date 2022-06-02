@@ -23,7 +23,16 @@
             ]
         },
         {
-            "src": ["day3BG", "day3DH", "day3GS"],
+            "src": ["day3BG", "day3F", "day3S"],
+            "alt": ["background", "fishing", "sea"],
+            "text": [
+                "오늘은 집 근처 바다에서 낚시를 했다",
+                ".",
+                "빨간 예쁜 물고기를 잡았다."
+            ]
+        },
+        {
+            "src": ["day4BG", "day4DH", "day4GS"],
             "alt": ["background", "dokev", "glass"],
             "text": [
                 "이상한 안경을 주웠다",
@@ -33,6 +42,36 @@
                 "신기해",
                 "!",
                 "!"
+            ]
+        },
+        {
+            "src": ["day5BG", "day5A"],
+            "alt": ["background", "AngrySymbol"],
+            "text": [
+                "다른 도깨비들이 괴물이 되어간다는 얘기를 들었다",
+                ".",
+                "내가 구할꺼야!"
+            ]
+        },
+
+        {
+            "src": ["day6BG", "day6AD", "day6HE", "day6H"],
+            "alt": ["background", "hammer"],
+            "text": [
+                "뿅뿅",
+                "!",
+                "내 마법 뿅망치로 도깨비를 구해줬다",
+                "!",
+                "나한테 고맙다고 했다."
+            ]
+        },
+        {
+            "src": ["day7"],
+            "alt": ["day7"],
+            "text": [
+                "새친구가 생겼다",
+                ".",
+                "함께 춤추며 놀 수 있는 흰고래 마을이 너무 좋아"
             ]
         }
     ]
