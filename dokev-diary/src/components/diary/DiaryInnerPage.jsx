@@ -7,12 +7,13 @@ import pageData from "../../data/pageData.json";
 
 const DiaryInnerPage = () => {
     const [page, setPage] = useRecoilState(pageState);
-
     return (
         <OuterFrame>
             <NextButton
                 onClick={() => {
-                    page === 2 ? setPage(0) : setPage(page + 1);
+                    page === pageData.day.length - 1
+                        ? setPage(0)
+                        : setPage(page + 1);
                 }}
             >
                 Next&nbsp;
@@ -117,7 +118,7 @@ const Writing = styled.div`
 `;
 const Special = styled.span`
     font-family: "Gaegu", cursive;
-    margin-right: 3vh;
+    margin-right: 2.5vh;
 `;
 const WrapVLine = styled.div`
     position: absolute;
