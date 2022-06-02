@@ -3,13 +3,13 @@ import styled from "styled-components";
 // import { useState, useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
 import DiaryInnerPage from "./DiaryInnerPage";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import { pageState } from "../../state/atoms";
 
 const Diary = () => {
     const [mouseStateOnCover, setMouseStateOnCover] = useState(0);
     const [coverState, setCoverState] = useState(false);
-    const setPage = useSetRecoilState(pageState);
+    const [page, setPage] = useRecoilState(pageState);
     useEffect(() => {
         console.log(mouseStateOnCover);
     });
@@ -65,20 +65,77 @@ const Diary = () => {
                     }}
                 >
                     <DiaryList>
-                        <div onClick={() => setPage(0)}>1.첫번째일기제목</div>
-                        <div onClick={() => setPage(1)}>2.룰루랄라울라울라</div>
-                        <div onClick={() => setPage(2)}>
-                            3.오늘먹은우리할매떡볶이꿀맛탱
+                        <div
+                            style={{
+                                color: page === 0 ? "#0d3645" : "#006b92",
+                                fontSize: page === 0 ? "3.5vh" : "3vh",
+                            }}
+                            onClick={() => setPage(0)}
+                        >
+                            1. 안녕 흰고래마을!
+                        </div>
+                        <div
+                            style={{
+                                color: page === 1 ? "#0d3645" : "#006b92",
+                                fontSize: page === 1 ? "3.5vh" : "3vh",
+                            }}
+                            onClick={() => setPage(1)}
+                        >
+                            2. 동네 구경을 하다
+                        </div>
+                        <div
+                            style={{
+                                color: page === 2 ? "#0d3645" : "#006b92",
+                                fontSize: page === 2 ? "3.5vh" : "3vh",
+                            }}
+                            onClick={() => setPage(2)}
+                        >
+                            3. 나는야 낚시왕
+                        </div>
+                        <div
+                            style={{
+                                color: page === 3 ? "#0d3645" : "#006b92",
+                                fontSize: page === 3 ? "3.5vh" : "3vh",
+                            }}
+                            onClick={() => setPage(3)}
+                        >
+                            4. 이상한 안경과 새로운 친구
+                        </div>
+                        <div
+                            style={{
+                                color: page === 4 ? "#0d3645" : "#006b92",
+                                fontSize: page === 4 ? "3.5vh" : "3vh",
+                            }}
+                            onClick={() => setPage(4)}
+                        >
+                            5. 도깨비 친구들의 위기!
+                        </div>
+                        <div
+                            style={{
+                                color: page === 5 ? "#0d3645" : "#006b92",
+                                fontSize: page === 5 ? "3.5vh" : "3vh",
+                            }}
+                            onClick={() => setPage(5)}
+                        >
+                            6. 도깨비를 구하다
+                        </div>
+                        <div
+                            style={{
+                                color: page === 6 ? "#0d3645" : "#006b92",
+                                fontSize: page === 6 ? "3.5vh" : "3vh",
+                            }}
+                            onClick={() => setPage(6)}
+                        >
+                            7. 다시 일상으로
                         </div>
                     </DiaryList>
                 </DiaryListArea>
             </DiaryBookBack>
-            {[0, 1, 2, 3, 4].map((n) => {
-                return (
-                    <DiaryPage key={n} number={n}>
-                        <DiaryInnerPage />
-                    </DiaryPage>
-                );
+            <DiaryPage key={0} number={0}>
+                <DiaryInnerPage />
+            </DiaryPage>
+            {[1, 2, 3, 4].map((n) => {
+                return <DiaryPage key={n} number={n} />;
             })}
         </DiaryArea>
     );
@@ -239,7 +296,4 @@ const DiaryPage = styled.div`
     z-index: ${(props) => 10 - props.number};
 `;
 
-const D1Card = styled.img`
-    position: absolute;
-`;
 export default Diary;
