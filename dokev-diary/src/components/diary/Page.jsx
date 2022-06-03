@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { cardState, pageState } from "../../state/atoms";

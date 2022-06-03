@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Page from "./Page";
 import { useRecoilState } from "recoil";

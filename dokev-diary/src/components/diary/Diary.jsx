@@ -10,9 +10,6 @@ const Diary = () => {
     const [mouseStateOnCover, setMouseStateOnCover] = useState(0);
     const [coverState, setCoverState] = useState(false);
     const [page, setPage] = useRecoilState(pageState);
-    useEffect(() => {
-        console.log(mouseStateOnCover);
-    });
     return (
         <DiaryArea>
             <DiaryBook
